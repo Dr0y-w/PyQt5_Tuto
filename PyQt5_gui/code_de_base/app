@@ -13,4 +13,4 @@ app = QApplication(sys.argv)
 w = AppWindow()
 w.show()
 sys.exit(app.exec_())
-© 2021 GitHub, Inc.
+
