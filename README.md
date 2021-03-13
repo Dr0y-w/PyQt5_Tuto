@@ -1,3 +1,4 @@
 # PyQt5_Tuto
 
-Ensemble des tutos de PyQt
+Ensemble des tutos pour utiliser PyQt5
+
