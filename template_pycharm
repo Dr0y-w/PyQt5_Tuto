@@ -1,1 +1,12 @@
+Comment creer un template dans pycharm avec le code de base pour gagner du temps
 
+dans file puis settings allez dans File and Code Templates ;
+
+appuyez sur le + pour creer un nouveau template ;
+
+donnez un nom à votre template ;
+
+dans la zone de texte, rentrez le code de base, enregistrer ;
+
+
+Pour utiliser le template, dans un projet, dans Fileappuyez sur new et selectionnez le nom de votre template
