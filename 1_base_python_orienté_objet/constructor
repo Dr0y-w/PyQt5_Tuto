@@ -1,0 +1,15 @@
+liste des constructor utile :
+
+__init__(self, arg): s'execute à la creation d'une instance de cette classe
+
+
+__add__(self, other): définit l'operation + sur la classe 
+__sub__(self, other): définit l'operation - sur la classe 
+__mul__(self, other): defiinit l'operation * sur la classe 
+
+
+__getitem__(self, item): défint l'action self[item] 
+__str__(self): définit ce qu'il se passe lorsque on utilise print sur une instance de cette classe
+
+
+(exemple dans "3_PyOpenGL_In_PyQt/2_génération_de_forme_plus_complexe/Vertex.py" )
