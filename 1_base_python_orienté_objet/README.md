@@ -1,1 +1,1 @@
-### Notion pour utiliser PyQt5
+### Notion nécessaire avant de commancer à utiliser PyQt5
