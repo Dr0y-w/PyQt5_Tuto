@@ -115,3 +115,31 @@ class Grid:
                 edges.append((i,i+1))
 
         return vertices, edges
+    
+    class Grille_opti:
+    def __init__(self, rayon, centre=[0,0,0]):
+        self.origine = Vertex(*centre)
+        self.rayon = rayon
+        self.vertices = self.gen()[0]
+        self.edges = self.gen()[1]
+
+    def gen(self):
+        vertices = []
+        edges = []
+        origine = deepcopy(self.origine)
+        origine = origine - ("x" + str(self.rayon)) - ("z" + str(self.rayon))
+        for i in range(2*self.rayon +1 ):
+            vertices.append((deepcopy(origine) + ("x" + str(i))).vertex)
+            vertices.append((deepcopy(origine) + ("x" + str(i)) + ("z" + str(2*self.rayon))).vertex)
+        for i in range(len(vertices)):
+            if i%2 == 0:
+                edges.append((i, i+1))
+        n = len(vertices)
+        for i in range(2*self.rayon + 1):
+            vertices.append((deepcopy(origine) + ("z" + str(i))).vertex)
+            vertices.append((deepcopy(origine) + ("z" + str(i)) + ("x" + str(2*self.rayon))).vertex)
+        for i in range(n, len(vertices)):
+            if i % 2 == 0:
+                edges.append((i, i+1))
+
+        return vertices, edges
