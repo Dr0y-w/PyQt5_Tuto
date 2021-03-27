@@ -1,4 +1,4 @@
-# Tuto pour afficher des vues généré par Opengl dans un fenêtre Pyqt5
+# Tuto pour afficher des vues générées par Opengl dans un fenêtre Pyqt5
 
 On utilise le QOpenglwidget de Qtdesigner
 
