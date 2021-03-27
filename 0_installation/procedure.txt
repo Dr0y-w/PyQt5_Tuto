@@ -1,0 +1,68 @@
+instalation qt-designer et pycharm avec les nouvelles versions:
+
+installation des modules : pyqt5,pyqt5-tools
+(windos) commande pip (une seule des deux commande fonctionne): 
+python -m pip install -U pyqt5 pyqt5-tools #install les deux modules
+ou 
+py -m pip install -U pyqt5 pyqt5-tools
+
+installation de pycharm (community edition) sur le site : 
+https://www.jetbrains.com/pycharm/download/#section=windows
+
+dans pycharm:
+crez un nouveau projet, allez dans les options du projet 
+dans la rubrique: Project:"NomDeVotreProjet"
+selectionner Python Interpreter
+cliquer sur le + en bas a gauche du tableau
+ajoutez alors les packages : pyqt5,pyqt5-tools et pyqt5-sip
+
+dans vos fichier trouvez designer.exe :
+C:\"Users"\Elève\AppData\Local\Programs\Python\Python39\Lib\site-packages\qt5_applications\Qt\bin\designer.exe
+     ^^                                              ^^
+ à remplacer par votre chemin d'installation de python 
+pour le trouver ouvrer un console python, et executer le script suivant
+
+import sys
+sys.path
+
+noter bien le chemin d'acces à designer.exe, votre path doit finir par "\designer.exe"
+
+on crez les deux outils dans pycharm :
+dans votre projet pycharm allez dans settings,Tools,External Tools
+
+premier outil : QTdesigner
+
+cliquez sur le plus pour creer un nouvel outil :
+Name: QTdesigner
+plus bas dans Tools settings, 
+program : le chemin d'accer de designer.exe (votre path doit finir par "\designer.exe")
+working directory: $ProjectFileDir$
+cliquer sur ok
+
+
+second outil: PyUIC (a.k.a. la moulinette)
+
+Name: PyUIC
+plus bas dans tools settings, 
+program : python.exe
+argument : -m PyQt5.uic.pyuic $FileName$ -o $FileNameWithoutExtension$.py
+working directory: $ProjectFileDir$
+cliquer sur ok, puis sur apply ou ok
+
+
+
+
+
+
+ressource d'aide (anglais): 
+
+site du tuto
+https://pythonpyqt.com/how-to-install-pyqt5-in-pycharm/#:~:text=Stay%20in%20the%20Project%20Interpreter,interface%20should%20look%20like%20this.&text=You%20can%20start%20designer%20directly%20from%20PyCharm.
+
+StackOverflaw:
+https://stackoverflow.com/questions/33458917/trying-to-convert-ui-file-to-py-file-using-qt-getting-error-importerror-dll
+https://stackoverflow.com/questions/13654782/pyuic4-import-error
+
+
+
+
