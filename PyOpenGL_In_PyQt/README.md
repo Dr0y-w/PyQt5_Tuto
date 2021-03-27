@@ -1,7 +1,5 @@
-# Tuto pour afficher Opengl dans Pyqt5
+# Tuto pour afficher des vues généré par Opengl dans un feenêtre Pyqt5
 
 On utilise le QOpenglwidget de Qtdesigner
 
-- module_forme.py contient les class Vertex, Cube ,Grid qui permettent de générer les listes de vertex et d'arretes pour afficher les formes
-- Pyqt5_PyOpenGL contient le code qui va afficher les formes, expliqué en détail
-- Qtdesigner_ui contient le code généré par Qtdesigner
+- les fichier finiassant par  ui.py sont générées par pyuic grace a Qtdesigner
