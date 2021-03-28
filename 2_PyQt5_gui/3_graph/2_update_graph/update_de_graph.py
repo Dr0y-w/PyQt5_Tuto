@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QDialog, QApplication
 import PyQt5.QtCore as QtCore # pour le timer
-from plot import Ui_Dialog
+from plot_ui import Ui_Dialog
 import pyqtgraph as pg
 import random as rd
 
