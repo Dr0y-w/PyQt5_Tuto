@@ -26,7 +26,7 @@ class mainWindow(QDialog):
         self.openGLWidget.paintGL = self.paintGL # raccourci
 
         timer = QTimer(self)  # Le timer
-        timer.timeout.connect(self.openGLWidget.update)  # appelle la fonction en argument
+        timer.timeout.connect(self.openGLWidget.update)  # appelle la fonction en argument (sans parenthèse )
         #ici update appelle la fonction resizeGL et paintGL
         timer.start(10)  # lance le timer pour un temps de 10 ms entre chaque timeout
 
