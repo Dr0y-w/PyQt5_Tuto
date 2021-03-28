@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QDialog, QApplication
 
 import pyqtgraph as pg # module qui permet de gérer les graphs
 
-from affichage_graph import Ui_Dialog # classe généré par QtQesigner
+from affichage_graph_ui import Ui_Dialog # classe généré par QtQesigner
 
 #on utilise le widget Graphics View, qu'on promu en PlotWidget
 #Dans qtdesigner:
