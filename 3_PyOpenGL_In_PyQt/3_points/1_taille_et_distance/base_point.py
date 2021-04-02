@@ -8,8 +8,8 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
 # importation du module contenant la class générée par Qtdesigner
-from qtdesigner_ui import Ui_Dialog
-from module_gen import *
+from base_point_ui import Ui_Dialog
+
 
 
 class mainWindow(QDialog):
@@ -26,7 +26,7 @@ class mainWindow(QDialog):
         self.openGLWidget.paintGL = self.paintGL # raccourci
 
         timer = QTimer(self)  # Le timer
-        timer.timeout.connect(self.openGLWidget.update)  # appelle la fonction en argument
+        timer.timeout.connect(self.openGLWidget.update)  # appelle la fonction en argument (sans parenthèse )
         #ici update appelle la fonction resizeGL et paintGL
         timer.start(10)  # lance le timer pour un temps de 10 ms entre chaque timeout
 
@@ -36,20 +36,24 @@ class mainWindow(QDialog):
         glClear(GL_COLOR_BUFFER_BIT)
         glClearColor(0, 0, 0, 1)  # définition de la couleur du font,le dernier nombre est l'alpha/la transparence
 
-        c1 = Cube(origine=[-0.5,-0.5,-0.5])
-        vertices = c1.vertices
-        edges = c1.edges
-        glBegin(GL_LINES) # début de l'affichage des lignes
-        # indique le type de formes à tracer (GL_LINES = des lignes). GL_QUADS permettrait de tracer des faces avec le code adapté
-        for edge in edges:
-            for vertex in edge:
-                glVertex3fv(vertices[vertex])
-        glEnd() # fin de l'affichage des lignes
+        #glEnable(GL_POINT_SMOOTH) # rond
+        glPointSize(50) #taille initiale
+        """changement de la taille des points avec la distance"""
+        glPointParameterfv(GL_POINT_DISTANCE_ATTENUATION, (1, 5, 1)) #permet de diminuer la taille des points avec
+        # la distance, (surtout les 2 derniers)
+        glPointParameterfv(GL_POINT_SIZE_MAX, 32.0) # définit la taille maximum des points
+        glPointParameterfv(GL_POINT_SIZE_MIN, 0.01) # définit la taille minimum des points
+        """affichage de points"""
+        glBegin(GL_POINTS) # début de l'affichage des lignes
 
-        """glBegin() et glEnd() ne sont pas très optimisées
-         Il existe des manières plus efficace pour faire la même chose mais plus complexe
-         chercher 'modern OpenGL' et  'VAO' ou 'VBO'
-         """
+        # un vertex est une liste ou un tuple de 3 int ou float (x,y,z)
+
+        glColor3f(1, 1, 1) # couleur en rgb du point, ici rouge
+        glVertex3fv((0,0,0))
+        glVertex3fv((0, 0, 1))
+        glVertex3fv((0, 0, 2))
+        glVertex3fv((0, 0, 10))
+        glEnd() # fin de l'affichage des lignes
 
         glMatrixMode(GL_PROJECTION)  # charge la matrice de projection
         """ on change ici les options de la projection sur l'écran """
@@ -59,11 +63,11 @@ class mainWindow(QDialog):
         glMatrixMode(GL_MODELVIEW)  # charge la matrice de caméra
         """ on change ici la position de la caméra """
         glLoadIdentity()  # charge une matrice identité
-        gluLookAt(0, 2, -5,
+        gluLookAt(0, 1, -4,
                   0, 0, 0,
                   0, 1, 0)
         # coordonnées de la position de la caméra  ,coordonnées du point vers lequel elle est dirigée, axe vertical de la caméra
-        glRotatef(1*self.angle, 1, 1, 1)  # permet de tourner la caméra autour de l'axe x,y,z
+        #glRotatef(0.4*self.angle, 0, 1, 0)  # permet de tourner la caméra autour de l'axe x ,y ,z
 
         #glTranslatef( 0, 0, 0.1*self.angle)#permet de déplacer la camera ,
         # mais est impacté par la rotation de la camera
